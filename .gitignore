@@ -253,3 +253,6 @@ paket-files/
 
 # my ignore files
 **/snapshots/*
+
+# mac index files
+.DS_Store

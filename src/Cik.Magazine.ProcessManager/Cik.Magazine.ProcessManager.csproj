@@ -4,7 +4,8 @@
     <OutputType>exe</OutputType>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <Nullable>enable</Nullable>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <ApplicationIcon />

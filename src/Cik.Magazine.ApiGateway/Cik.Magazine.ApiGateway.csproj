@@ -4,7 +4,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
   </PropertyGroup>
@@ -15,10 +15,14 @@
     <Reference Include="IdentityServer4">
       <HintPath>..\..\..\..\..\..\thangchung.HARVEYNASH\.nuget\packages\identityserver4\1.1.0\lib\net452\IdentityServer4.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>..\..\..\..\..\..\thangchung.HARVEYNASH\.nuget\packages\identityserver4\1.1.0\lib\net452\IdentityServer4.dll</HintPath>
+    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>..\..\..\..\..\..\thangchung.HARVEYNASH\.nuget\packages\identityserver4\1.1.0\lib\net452\IdentityServer4.dll</HintPath>
+    </Reference>
     <Reference Include="System.IdentityModel" />
   </ItemGroup>
   <ItemGroup>
