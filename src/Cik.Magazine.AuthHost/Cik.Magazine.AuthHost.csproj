@@ -4,6 +4,14 @@
     <TargetFramework>net6.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Company>Value</Company>
+    <Copyright>Value</Copyright>
+    <Description>Value</Description>
+    <FileVersion>Value</FileVersion>
+    <InformalVersion>Value</InformalVersion>
+    <Product>Value</Product>
+    <UserSecretsId>Value</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="wwwroot\css\site.css" />
