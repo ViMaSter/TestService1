@@ -7,6 +7,12 @@
     <TargetFramework>net7.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Company>Value</Company>
+    <Copyright>Value</Copyright>
+    <Description>Value</Description>
+    <FileVersion>Value</FileVersion>
+    <InformalVersion>Value</InformalVersion>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
