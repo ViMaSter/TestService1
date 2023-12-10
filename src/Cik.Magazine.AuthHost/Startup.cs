@@ -1,4 +1,5 @@
 ﻿using IdentityServer4;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +24,7 @@ namespace Cik.Magazine.AuthHost
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggingBuilder loggerFactory)
         {
             loggerFactory.AddConsole();
 
@@ -34,13 +35,7 @@ namespace Cik.Magazine.AuthHost
 
             app.UseIdentityServer();
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme,
-
-                AutomaticAuthenticate = false,
-                AutomaticChallenge = false
-            });
+            app.UseAuthentication();
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();

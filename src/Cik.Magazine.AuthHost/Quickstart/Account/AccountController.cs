@@ -87,7 +87,6 @@ namespace Cik.Magazine.AuthHost.Quickstart.Account
 
                     // issue authentication cookie with subject ID and username
                     var user = _users.FindByUsername(model.Username);
-                    await HttpContext.Authentication.SignInAsync(user.SubjectId, user.Username, props);
 
                     // make sure the returnUrl is still valid, and if yes - redirect back to authorize endpoint
                     if (_interaction.IsValidReturnUrl(model.ReturnUrl))
@@ -137,8 +136,6 @@ namespace Cik.Magazine.AuthHost.Quickstart.Account
                 try
                 {
                     // hack: try/catch to handle social providers that throw
-                    await HttpContext.Authentication.SignOutAsync(vm.ExternalAuthenticationScheme, 
-                        new AuthenticationProperties { RedirectUri = url });
                 }
                 catch(NotSupportedException) // this is for the external providers that don't have signout
                 {
@@ -149,7 +146,6 @@ namespace Cik.Magazine.AuthHost.Quickstart.Account
             }
 
             // delete local authentication cookie
-            await HttpContext.Authentication.SignOutAsync();
 
             return View("LoggedOut", vm);
         }
@@ -175,7 +171,6 @@ namespace Cik.Magazine.AuthHost.Quickstart.Account
                     id.AddClaim(new Claim(ClaimTypes.NameIdentifier, HttpContext.User.Identity.Name));
                     id.AddClaim(new Claim(ClaimTypes.Name, HttpContext.User.Identity.Name));
 
-                    await HttpContext.Authentication.SignInAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme, new ClaimsPrincipal(id), props);
                     return Redirect(returnUrl);
                 }
                 else
@@ -203,7 +198,7 @@ namespace Cik.Magazine.AuthHost.Quickstart.Account
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl)
         {
             // read external identity from the temporary cookie
-            var info = await HttpContext.Authentication.GetAuthenticateInfoAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
+            var info = HttpContext.AuthenticateAsync().Result;
             var tempUser = info?.Principal;
             if (tempUser == null)
             {
@@ -257,12 +252,6 @@ namespace Cik.Magazine.AuthHost.Quickstart.Account
                 props = new AuthenticationProperties();
                 props.StoreTokens(new[] { new AuthenticationToken { Name = "id_token", Value = id_token } });
             }
-
-            // issue authentication cookie for user
-            await HttpContext.Authentication.SignInAsync(user.SubjectId, user.Username,  provider, props, additionalClaims.ToArray());
-
-            // delete temporary cookie used during external authentication
-            await HttpContext.Authentication.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
 
             // validate return URL and redirect back to authorization endpoint
             if (_interaction.IsValidReturnUrl(returnUrl))

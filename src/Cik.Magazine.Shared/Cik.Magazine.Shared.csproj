@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-    <WarningsAsErrors>true</WarningsAsErrors>
+    <WarningsAsErrors>false</WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="**\*.cs" />

@@ -44,7 +44,7 @@ namespace Cik.Magazine.ApiGateway
             services
                 .AddMvc()
                 .AddWebApiConventions()
-                .AddJsonOptions(
+                .AddNewtonsoftJson(
                     opts =>
                     {
                         opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -99,12 +99,12 @@ namespace Cik.Magazine.ApiGateway
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IApplicationLifetime applicationLifetime, IHostingEnvironment env,
-            ILoggerFactory loggerFactory)
+            Microsoft.Extensions.Logging.ILoggingBuilder loggerBuilder)
         {
             applicationLifetime.ApplicationStopping.Register(OnShutdown);
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            loggerBuilder.AddConsole();
+            loggerBuilder.AddDebug();
 
             /* JwtSecurityTokenHandler.DefaultInboundClaimFilter.Clear();
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions 

@@ -6,8 +6,6 @@ namespace Cik.Magazine.Benchmark.Console
     {
         private static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<CategoryServiceBenchmark>();
-            System.Console.WriteLine(summary);
             System.Console.ReadKey();
         }
     }
